@@ -1,6 +1,7 @@
 # Iris
 
 [![Iris CI](https://github.com/jahidbappi/iris/actions/workflows/ci.yml/badge.svg)](https://github.com/jahidbappi/iris/actions)
+[![Website](https://img.shields.io/badge/website-iris--puce.vercel.app-violet?style=flat-square)](https://iris-puce.vercel.app)
 
 **Real-time multimodal voice + vision AI studio.**
 

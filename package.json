@@ -2,6 +2,11 @@
   "name": "iris",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://iris-puce.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jahidbappi/iris.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
