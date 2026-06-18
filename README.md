@@ -4,6 +4,8 @@
 
 **Real-time multimodal voice + vision AI studio.**
 
+**Live website:** https://iris-puce.vercel.app · **Studio:** https://iris-puce.vercel.app/studio
+
 Iris lets you speak naturally to an AI creative director that sees through your camera, generates and edits visuals in real time, and narrates results back with voice — with production-grade streaming, cost guardrails, and observability.
 
 ## Architecture
