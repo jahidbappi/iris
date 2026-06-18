@@ -51,7 +51,21 @@ npm run dev
 | `REPLICATE_API_TOKEN` | No | Enables SDXL image generation |
 | `OPENAI_MODEL` | No | Default `gpt-4o` |
 
-Without keys, Iris runs in **demo mode** with mock responses and browser TTS.
+Without keys, Iris runs in **demo mode** with scripted mock responses, browser TTS, and placeholder imagery — useful for UI exploration only.
+
+### Real API mode (production)
+
+Set `OPENAI_API_KEY` (and optionally `REPLICATE_API_TOKEN`) in `.env.local` or your Vercel project settings:
+
+| Capability | Provider | Notes |
+|------------|----------|-------|
+| Speech-to-text | OpenAI Whisper | Live microphone transcription |
+| Orchestration | GPT-4o | Tool calling for generate / edit / describe |
+| Text-to-speech | OpenAI TTS | Streamed narration |
+| Image generation | DALL-E 3 or Replicate SDXL | Real generated visuals (no stock placeholders) |
+| Vision | GPT-4o | Camera, screen share, and upload analysis |
+
+Demo mode never sends audio or images to external APIs. Real mode uses your keys and bills per provider usage — see `/observability` for per-session cost and latency.
 
 ## Deploy
 
