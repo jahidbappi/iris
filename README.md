@@ -9,6 +9,14 @@
 
 Iris lets you speak naturally to an AI creative director that sees through your camera, generates and edits visuals in real time, and narrates results back with voice — with production-grade streaming, cost guardrails, and observability.
 
+## Impact
+
+- **Multimodal pipeline** — voice → LLM tool calling → image gen → TTS in one SSE stream
+- **Demo mode on Vercel** — full studio UX with zero API keys; reviewers can try instantly
+- **Observability dashboard** — per-session cost estimates, P50/P95 latency, stage breakdown
+- **Shareable replays** — session snapshots with timeline playback
+- **CI + deploy** — GitHub Actions, auto-deploy to Vercel on push
+
 ## Architecture
 
 ```mermaid

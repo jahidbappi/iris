@@ -155,7 +155,7 @@ export default function StudioPage() {
 
   return (
     <div className="min-h-screen bg-[#07070d] text-white">
-      <SiteNav />
+      <SiteNav showDemoBadge />
       <div className="px-6 py-8 pt-24">
       <div className="mx-auto max-w-7xl">
         <header className="mb-8 flex flex-wrap items-center justify-between gap-4">

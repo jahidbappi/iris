@@ -1,15 +1,23 @@
 import Link from "next/link";
 import { Code2 } from "lucide-react";
+import { DemoModeBadge } from "@/components/layout/DemoModeBadge";
 
 const MOSAIC_URL = process.env.NEXT_PUBLIC_MOSAIC_URL ?? "https://mosaic-rag.vercel.app";
 
-export function SiteNav() {
+type SiteNavProps = {
+  showDemoBadge?: boolean;
+};
+
+export function SiteNav({ showDemoBadge = false }: SiteNavProps) {
   return (
     <header className="fixed top-0 z-50 w-full border-b border-white/5 bg-[#07070d]/80 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link href="/" className="text-lg font-semibold tracking-tight text-white">
-          Iris
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link href="/" className="text-lg font-semibold tracking-tight text-white">
+            Iris
+          </Link>
+          {showDemoBadge && <DemoModeBadge />}
+        </div>
         <nav className="hidden items-center gap-8 text-sm text-white/60 md:flex">
           <Link href="/studio" className="hover:text-white transition-colors">
             Studio
