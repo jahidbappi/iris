@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden px-6 py-20">
+    <section className="relative min-h-screen overflow-hidden px-6 pb-20 pt-32">
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -left-32 top-20 h-96 w-96 rounded-full bg-violet-600/30 blur-[120px]" />
         <div className="absolute right-0 top-1/3 h-80 w-80 rounded-full bg-fuchsia-500/20 blur-[100px]" />

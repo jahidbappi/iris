@@ -12,13 +12,29 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://iris-puce.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Iris — Real-Time Multimodal AI Studio",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Iris — Real-Time Multimodal AI Studio",
+    template: "%s · Iris",
+  },
   description:
-    "Voice + vision creative studio with streaming image generation, TTS narration, and production observability.",
+    "Voice + vision AI studio with streaming image generation, TTS narration, and production observability. See. Speak. Create.",
+  keywords: ["AI", "multimodal", "GenAI", "voice", "vision", "portfolio"],
+  authors: [{ name: "Md. Jahidul Islam", url: "https://github.com/jahidbappi" }],
   openGraph: {
+    type: "website",
+    url: siteUrl,
     title: "Iris — See. Speak. Create.",
     description: "Real-time multimodal AI studio for creative direction.",
+    siteName: "Iris",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Iris — Real-Time Multimodal AI Studio",
+    description: "Voice + vision creative studio with production observability.",
   },
 };
 

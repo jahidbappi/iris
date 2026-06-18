@@ -4,6 +4,8 @@ import Link from "next/link";
 import { RotateCcw, Share2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { SiteNav } from "@/components/layout/SiteNav";
+import { SiteFooter } from "@/components/layout/SiteFooter";
 import { VisionPanel } from "@/components/studio/VisionPanel";
 import { VoiceControl } from "@/components/studio/VoiceControl";
 import { CanvasPanel } from "@/components/studio/CanvasPanel";
@@ -152,7 +154,9 @@ export default function StudioPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#07070d] px-6 py-8 text-white">
+    <div className="min-h-screen bg-[#07070d] text-white">
+      <SiteNav />
+      <div className="px-6 py-8 pt-24">
       <div className="mx-auto max-w-7xl">
         <header className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <div>
@@ -214,6 +218,8 @@ export default function StudioPage() {
           </Card>
         </div>
       </div>
+      </div>
+      <SiteFooter />
     </div>
   );
 }
