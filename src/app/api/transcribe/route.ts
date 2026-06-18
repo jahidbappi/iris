@@ -1,18 +1,23 @@
 import { NextRequest, NextResponse } from "next/server";
 import { mockTranscription } from "@/lib/ai/mock";
-import { getOpenAI, isDemoMode } from "@/lib/ai/providers";
+import { getOpenAI } from "@/lib/ai/providers";
+import { getRuntimeStatus } from "@/lib/ai/runtime-mode";
 
 export async function POST(request: NextRequest) {
   try {
     const formData = await request.formData();
     const audio = formData.get("audio");
+    const status = await getRuntimeStatus();
 
-    if (isDemoMode()) {
-      await new Promise((r) => setTimeout(r, 600));
+    if (status.mode !== "cloud") {
+      await new Promise((r) => setTimeout(r, 400));
       return NextResponse.json({
         text: mockTranscription(),
-        demo: true,
-        latencyMs: 600,
+        demo: status.mode === "demo",
+        localOss: status.mode === "local-oss",
+        useBrowserAsr: true,
+        message: "Prefer Web Speech API in browser for free ASR (see OSS.md)",
+        latencyMs: 400,
       });
     }
 

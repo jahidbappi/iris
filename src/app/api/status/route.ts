@@ -1,11 +1,8 @@
-import { hasOpenAI, hasReplicate, isDemoMode } from "@/lib/ai/providers";
+import { getRuntimeStatus } from "@/lib/ai/runtime-mode";
 
 export const runtime = "nodejs";
 
 export async function GET() {
-  return Response.json({
-    demoMode: isDemoMode(),
-    hasOpenAI: hasOpenAI(),
-    hasReplicate: hasReplicate(),
-  });
+  const status = await getRuntimeStatus();
+  return Response.json(status);
 }

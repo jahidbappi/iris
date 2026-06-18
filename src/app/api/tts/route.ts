@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getOpenAI, isDemoMode } from "@/lib/ai/providers";
+import { getOpenAI } from "@/lib/ai/providers";
+import { getRuntimeStatus } from "@/lib/ai/runtime-mode";
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,11 +10,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Text is required" }, { status: 400 });
     }
 
-    if (isDemoMode()) {
+    const status = await getRuntimeStatus();
+    if (status.mode !== "cloud") {
       return NextResponse.json({
-        demo: true,
+        demo: status.mode === "demo",
+        localOss: status.mode === "local-oss",
         text,
-        message: "Use browser SpeechSynthesis in demo mode",
+        message: "Use browser SpeechSynthesis (free, no API key)",
       });
     }
 

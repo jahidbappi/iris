@@ -2,7 +2,8 @@ import type { ChatCompletionMessageParam, ChatCompletionTool } from "openai/reso
 import type { ChatMessage, OrchestratorInput, OrchestratorOutput, ToolCallResult } from "@/types";
 import { IRIS_TOOLS, type IrisToolName } from "@/lib/ai/tools";
 import { mockOrchestrate } from "@/lib/ai/mock";
-import { getOpenAI, getReplicate, isDemoMode } from "@/lib/ai/providers";
+import { ollamaOrchestrate } from "@/lib/ai/ollama";
+import { getOpenAI, getReplicate, hasOpenAI, hasLocalOllama } from "@/lib/ai/providers";
 import { estimateImageCost, estimateTokenCost } from "@/lib/observability/metrics";
 
 async function runImageGeneration(prompt: string, style?: string): Promise<{ url: string; latencyMs: number }> {
@@ -108,10 +109,18 @@ async function executeTool(
 }
 
 export async function orchestrate(input: OrchestratorInput): Promise<OrchestratorOutput> {
-  if (isDemoMode()) {
-    return mockOrchestrate(input);
+  if (hasOpenAI()) {
+    return orchestrateCloud(input);
   }
 
+  if (await hasLocalOllama()) {
+    return ollamaOrchestrate(input);
+  }
+
+  return mockOrchestrate(input);
+}
+
+async function orchestrateCloud(input: OrchestratorInput): Promise<OrchestratorOutput> {
   const openai = getOpenAI();
   if (!openai) {
     return mockOrchestrate(input);
