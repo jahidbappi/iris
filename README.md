@@ -1,5 +1,7 @@
 # Iris
 
+[![Iris CI](https://github.com/jahidbappi/iris/actions/workflows/ci.yml/badge.svg)](https://github.com/jahidbappi/iris/actions)
+
 **Real-time multimodal voice + vision AI studio.**
 
 Iris lets you speak naturally to an AI creative director that sees through your camera, generates and edits visuals in real time, and narrates results back with voice — with production-grade streaming, cost guardrails, and observability.
