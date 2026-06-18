@@ -38,7 +38,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) → **Open Studio**.
+**Live demo:** [https://iris-puce.vercel.app](https://iris-puce.vercel.app)
 
 ## Environment
 
